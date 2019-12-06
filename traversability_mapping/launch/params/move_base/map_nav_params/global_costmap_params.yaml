@@ -1,13 +1,13 @@
 global_costmap:
    global_frame: map
-   robot_base_frame: base_link
+   robot_base_frame: base_footprint
    update_frequency: 2.0
    publish_frequency: 2.0
-   width: 10.0
-   height: 10.0
-   resolution: 0.1
-   origin_x: -10.0
-   origin_y: -10.0
+   width: 40.0
+   height: 40.0
+   resolution: 0.2
+   origin_x: 0.0
+   origin_y: 0.0
    static_map: true
    rolling_window: false
    static_layer: {map_topic: /occupancy_map_local}
@@ -16,3 +16,9 @@ global_costmap:
    - {name: static_layer, type: "costmap_2d::StaticLayer"}
    - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
    - {name: inflater_layer, type: "costmap_2d::InflationLayer"}
+
+   inflater_layer: # Tuned for RCVE values
+    inflation_radius: 2.0
+    inscribed_radius: 1.55
+    circumscribed_radius: 1.80
+    cost_scaling_factor: 10.0 # default 10
